@@ -1,0 +1,42 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.1.0
+    hooks:
+      - id: autoflake
+        args: ["--remove-all-unused-imports", "--remove-unused-variables"]
+
+  - repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+      - id: black
+        exclude: ^.venv/
+        language_version: python3.9
+
+  - repo: https://github.com/myint/docformatter
+    rev: v1.5.1
+    hooks:
+      - id: docformatter
+        args: ["--in-place", "--recursive", "--blank", "--pre-summary-newline"]
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        args:
+          - --max-line-length=88  # Zgodność z Black
+          - --ignore=E203,W503    # Dodatkowe ignorowane błędy zgodne z Black
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: isort
+        args: ["--profile", "black"]  # Zgodność z Black
+

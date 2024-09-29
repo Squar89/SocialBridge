@@ -1,0 +1,8 @@
+pre-commit
+fastapi
+pydantic
+pydantic-core
+pymongo
+motor
+uvicorn
+pydantic[email]
